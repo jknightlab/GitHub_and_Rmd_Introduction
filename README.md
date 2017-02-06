@@ -22,5 +22,3 @@ and a numbered list
 **Some bold text** and _some italic text_
 
 And a [link](http://kbroman.org/knitr_knutshell/pages/markdown.html)
-
-An **extra** _line_ in the file with `a code block`
