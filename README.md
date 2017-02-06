@@ -1,6 +1,6 @@
 # GitHub_and_Rmd_Introduction
 
-This is my practice markdown document.
+This is my markdown document.
 
 Use a blank line to separate paragraphs
 
