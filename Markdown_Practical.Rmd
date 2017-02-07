@@ -246,5 +246,9 @@ The html file will be generated in the current directory
 
 ## Links
 
+A [markdown cheatsheet](http://www.unexpected-vortices.com/sw/rippledoc/quick-markdown-example.html) or [two](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+
 R Studio has some great help files:
 http://rmarkdown.rstudio.com/html_document_format.html#overview 
+
+[Details on knitr](https://yihui.name/knitr/)
