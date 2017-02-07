@@ -2,9 +2,10 @@
 title: "Git Practice"
 author: "Katie Burnham"
 date: "9 February 2017"
-output: 
-  html_document: 
+output:
+  html_document:
     keep_md: yes
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -71,7 +72,9 @@ not already included in the lab account).
 6. You will now be taken to the home page for your new repository. This shows
 you all the files in your folder (currently just a README), and allows you to 
 edit them directly. Have a look around; there are a LOT of options and you can do
-a lot of things that are beyond the scope of this introduction.
+a lot of things that are beyond the scope of this introduction. If you do want to
+delete your repository at the end, go to the settings tab and scroll to the 
+Danger Zone.
 
 ![](Screenshots/Repository_home_page.png)
 
