@@ -1,15 +1,8 @@
----
-title: "Git Practice"
-author: "Katie Burnham"
-date: "9 February 2017"
-output: 
-  html_document: 
-    keep_md: yes
----
+# Git Practice
+Katie Burnham  
+9 February 2017  
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(eval = FALSE, include=FALSE)
-```
+
 
 In this practical, you will make a GitHub repository, edit a markdown text file,
 and track changes in this document using Git. You can do this using
