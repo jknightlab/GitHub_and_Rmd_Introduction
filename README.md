@@ -22,3 +22,5 @@ and a numbered list
 **Some bold text** and _some italic text_
 
 And a [link](http://kbroman.org/knitr_knutshell/pages/markdown.html)
+
+![](https://ipetcompanion.com/feedapuppy/styles/media/puppy.jpg)
