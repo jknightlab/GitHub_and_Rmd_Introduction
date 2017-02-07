@@ -1,3 +1,9 @@
+---
+output:
+  html_document:
+  pdf_document: default
+  word_document: default
+---
 # GitHub_and_Rmd_Introduction
 
 This is my practice markdown document.
@@ -23,4 +29,39 @@ and a numbered list
 
 And a [link](http://kbroman.org/knitr_knutshell/pages/markdown.html)
 
+A web-based image:
+
 ![](https://ipetcompanion.com/feedapuppy/styles/media/puppy.jpg)
+
+and a local image:
+
+![](my_image.jpg)
+
+
+A quote:
+
+Oscar Wilde said:
+
+> Be yourself; everybody else
+> is already taken.
+
+and a^[footnote]
+
+A horizontal rule:
+
+***********
+
+or 
+
+---------
+
+sub~scripts~
+
+
+  Right     Left     Center     Default
+-------     ------ ----------   -------
+     12     12        12            12
+    123     123       123          123
+      1     1          1             1
+
+Table:  Demonstration of simple table syntax.
