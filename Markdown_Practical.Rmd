@@ -1,0 +1,250 @@
+---
+title: "R Markdown Practical"
+author: "Katie Burnham"
+date: "9th February 2017"
+output: 
+  html_document
+---
+
+In the Git practical, we used markdown for the README file. Here is a quick 
+refresher, with a few extras: 
+```
+**bold** and _italic_ (or *italic*)
+
+# Header 1
+
+## Header 2
+
+### Header 3
+
+Unordered List:
+* Item 1
+* Item 2
+
+Ordered List:
+1 Item 1
+2 Item 2
+
+A [linked phrase](http://example.com)
+
+A quote:
+
+Oscar Wilde said:
+
+> Be yourself; everybody else
+> is already taken.
+
+and a^[footnote]
+
+A horizontal rule:
+
+***********
+
+or 
+
+---------
+
+sub~scripts~
+
+`r ''`
+```
+
+You can already see that it is useful to make simple text documents look much
+better. The actual markdown document is very readable and easy to edit, and R
+Studio has spell check and find/replace.) However, there are other benefits to
+using Markdown. 
+
+## Why not just use Word?
+
+### Images and tables
+
+1. Open R Studio again and add the following to your README file:
+
+```
+![](https://ipetcompanion.com/feedapuppy/styles/media/puppy.jpg)
+```
+Have you ever tried to format images in Word, and make them all stay where you
+want to? We are currently working with a pretty simple document, but once you
+are over a couple of pages, markdown makes this much more straightforwad. The 
+rule is that you have the ! and square brackets, then the path to your image goes
+in the normal brackets. This can be a local file, e.g.
+
+```
+![](my_image.jpg)
+```
+
+2. In the drop down menu next to the Preview button, click Preview in Word, or 
+pdf. Then look at the different outputs you can get (I think the PDF will only
+work if you have a LaTeX distribution installed). Web pages and PDFs look
+nice, right? But html and LaTeX are too complicated to learn just for a short
+document. Well, markdown is a simpler alternative. As well as looking nice on
+GitHub, you can email the file generated and email it to someone (e.g. Julian).
+You can imagine that this is a nice way of sharing a summary of what you have been working on. 
+
+3. You can include a clickable table of contents. Click the settings button and
+check the table of contents box. Preview the file, and you will see that you can
+click on the entries to move to that part of the file. 
+
+4. Let's include a table. Add the following to your file and preview:
+
+```
+  Right     Left     Center     Default
+-------     ------ ----------   -------
+     12     12        12            12
+    123     123       123          123
+      1     1          1             1
+
+Table:  Demonstration of simple table syntax.
+```
+
+OK, that table is annoying to type out. Try going to 
+http://www.tablesgenerator.com/markdown_tables and copying in a more 
+complicated table from Excel, then copying the markdown output back. Much better.
+You can also format these tables differently (see
+[here](http://rmarkdown.rstudio.com/authoring_pandoc_markdown.html))
+
+### R Markdown
+
+The main reason I use Markdown though is R Markdown. This allows you to include
+chunks of R (or other languages) code in your document, which are then executed
+and the output included in your html file. To try this out, open a new R Markdown
+file in R Studio. Give it a title, and the template will be opened. Click "Knit"
+(Knit is the R package used to convert Markdown into html), and you will be asked
+to save it first. Put it in your Git repository for now. 
+
+1. First, you can see that your title, name, and the date have been put in at the
+top. Looking at the R Markdown file, you will see a section at the top surrounded
+by - - -
+
+```
+---
+title: "Markdown Practical"
+author: "Katie Burnham"
+date: "7 February 2017"
+output: html_document
+---
+```
+
+This is called the yaml header (yaml stands for either "yet another markup
+language" or "YAML ain't markup language"). This contains the information the
+programme needs to generate your file. In our README.md file, this just says that
+the output is an html document. However, we can extend this. For example, open
+the output options from the settings menu and add a table of contents, change the
+default figure size, and number section headings. Knit the file again to see the 
+difference. 
+
+You can of course edit the yaml section directly, rather than going
+through the settings menu. For example, at the moment, the date is written out.
+However, we don't want to have to retype it every time we edit the file. Instead,
+replace it with
+
+```{r include=TRUE, eval=FALSE}
+'`r Sys.Date()`'
+```
+
+This is R code, meaning "print out today's date". We will come back to using R in
+the next section. First, here are a few other options you can add:
+
+```
+title: "Markdown Practical"
+author:
+  name: Katie Burnham
+  affiliation: WTCHG
+date: "7 February 2017"
+output: 
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: false
+    theme: flatly
+    highlight: kate
+    code_folding: hide
+```
+
+When an R Markdown file is processed to make the HTML file, there is an 
+intermediate markdown file made and not kept. I like to keep the markdown file,
+because I can then upload both the Rmd and md files to GitHub, and have the
+markdown file displayed as HTML there with no extra work. To do this, include:
+```
+html_document:
+  keep_md: true
+```
+
+If you knit to a pdf, you can also keep the LaTeX file generated.
+
+### Some R Code Chunks
+
+The R Markdown template contains some example code chunks. The first one is:
+
+    ```{r setup, include=FALSE}`r ''`
+    knitr::opts_chunk$set(echo = TRUE)
+    ```
+
+Code chunks are indicated using three ticks. After the opening ticks, you tell it
+what sort of code you are using, so ` {r} ` or ` {bash} ` or ` {python} `. For
+now, we will use R as it is more likely to work straight off. The next word is 
+the name of your chunk. This allows easy navigation and bug finding. Go back to
+your R markdown file, and you will see your code chunks are listed in the 
+document outline. You can also navigate to them using the menu at the bottom of 
+the editor panel. 
+
+I always have a setup chunk first, in which I set the options for the rest of the
+document. It will look like this:
+
+    ```{r set-up, echo=FALSE, message=FALSE, warning=FALSE}`r ''`
+    library(ggplot2) # load any packages here
+    knitr::opts_chunk$set(eval = TRUE, message = FALSE,	warning = FALSE)
+    ```
+This means that I want my code to be evaluated, but I don't want any messages
+or warnings from R to be printed out. 
+
+You can then include actual code in subsequent chunks. The template document
+uses the example dataset cars to show how R Markdown can print out tables (using
+summary) and plots (using plot). 
+
+1. The table is ugly. Change the start of this chunk to 
+`{r cars, results="asis"}` and the contents to `knitr::kable(summary(cars))`
+
+To add in new chunks, there is a button called
+"Insert" as a shortcut, and in each chunk there is a little settings button 
+where you can modify the defaults. You can then run this code like normal R code,
+you can run each chunk individually, you can run all the chunks together (see
+the drop down menu next to "Run""), or you can knit the document and they are
+run and the output included. In our YAML header, we have told it to hide the 
+code, but you can also display it by changing this. 
+
+### Caching
+
+Your code might take a long time to run. You can add the following to your setup
+to save the output of each chunk so that they don't have to be regenerated
+unless you have edited that chunk:
+
+```
+knitr::opts_chunk$set(cache=TRUE)
+```
+
+### Using R Markdown on galahad/rescomp
+
+I work locally as much as I can, because I can then try out little bits of code,
+knit, add a bit of text, knit, and so on. However, if you are working with large
+datasets, the way to knit R Markdown documents is using the `knitr` package and 
+the `knit` command. I've put an R Markdown document in /well/jknight if you want 
+to try this:
+
+```{bash, eval=FALSE}
+cd /well/jknight
+
+R
+install.packages(knitr)
+library(knitr)
+
+knit("RMarkdown_practical.Rmd")
+```
+
+The html file will be generated in the current directory
+
+## Links
+
+R Studio has some great help files:
+http://rmarkdown.rstudio.com/html_document_format.html#overview 
